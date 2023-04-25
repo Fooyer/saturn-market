@@ -52,3 +52,65 @@ header a{
 #hamburguer{
     color: #fff;
 }
+
+#nav-mobile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+/* Estilo do ícone de hambúrguer */
+#menu-header-mobile {
+    width: 40px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 999;
+}
+  
+  /* Estilo das linhas do ícone de hambúrguer */
+.hamburguer-line {
+    width: 100%;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+    z-index: 999;
+}
+  
+  /* Animação da linha do meio quando o menu é aberto */
+#menu-header-mobile.active .hamburguer-line:nth-child(2) {
+    transform: scaleX(0);
+}
+  
+  /* Animação das linhas superior e inferior quando o menu é aberto */
+#menu-header-mobile.active .hamburguer-line:nth-child(1) {
+    transform: translateY(13px) rotate(45deg);
+}
+  
+#menu-header-mobile.active .hamburguer-line:nth-child(3) {
+    transform: translateY(-13px) rotate(-45deg);
+}
+
+#options-hamburguer-header{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.815);
+    margin: 0 auto;
+    z-index: 99;
+}
+
+#options-hamburguer-header a{
+    margin: 20px;
+    font-size: 16pt;
+}

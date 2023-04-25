@@ -1,6 +1,7 @@
 import './globals.css'
 
 import Header from '@/components/header/header'
+import Footer from '@/components/footer/footer'
 
 export const metadata = {
   title: 'Saturn Market',
@@ -16,6 +17,8 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
         <Header />
 
         {children}
+
+        <Footer />
         
       </body>
 
