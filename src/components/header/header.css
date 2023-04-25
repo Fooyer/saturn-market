@@ -45,6 +45,9 @@ header a{
     border: 1px transparent;
     padding: 7px;
     background-color: #fff;
+    font-size: 12pt;
+    font-weight: 450;
+    color: #000;
     border: 0;
     border-radius: 5px;
     cursor: pointer;

@@ -1,0 +1,49 @@
+.login{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#caixa-login{
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+#caixa-login form{
+    display: flex;
+    flex-direction: column;
+}
+#caixa-login h1{
+    padding-bottom: 40px;
+}
+#caixa-login input{
+    padding: 8px;
+    border-radius: 3px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.473);
+    outline: none;
+    margin-bottom: 5px;
+}
+#botoes-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 120px;
+}
+#botoes-login button{
+    width: 320px;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+#entrar-login{
+    background-color: rgb(50, 255, 50);
+}
+#criar-conta-login{
+    background-color: rgb(140, 140, 255);
+}

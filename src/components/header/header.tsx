@@ -3,17 +3,28 @@
 import './header.css'
 import Link from 'next/link'
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { parseCookies } from 'nookies';
 
 export default function Header() {
     
     const [tamanhoJanela, setTamanhoJanela] = useState(0)
     const [mostrarMenu, setMostrarMenu] = useState(false)
+    const [redirectPage, setRedirectPage] = useState('/')
     
     useEffect(()=>{
         setTamanhoJanela(window.innerWidth)
 
         window.addEventListener('resize', () => setTamanhoJanela(window.innerWidth));
+
+        let cookieStore = parseCookies();
+        let account = cookieStore.account
+
+        if (!account){
+            setRedirectPage('/login')
+        } else{
+            setRedirectPage('/perfil')
+        }
     },[])
 
     function showMenu(){
@@ -36,7 +47,7 @@ export default function Header() {
                 <Link href="/carrinho" >Carrinho</Link>
             </div>
 
-            <button id="minha-conta-header">Minha Conta</button>
+            <Link id="minha-conta-header" href={redirectPage}>Minha Conta</Link>
 
           </nav>}
           {tamanhoJanela <= 999 && tamanhoJanela!==0 && <nav id='nav-mobile'>
@@ -57,10 +68,10 @@ export default function Header() {
                 {mostrarMenu && 
                 
                     <div id="options-hamburguer-header">
-                        <Link href="/" >Home</Link>
-                        <Link href="/produtos">Produtos</Link>
-                        <Link href="/carrinho">Carrinho</Link>
-                        <Link href="/minha-conta">Minha Conta</Link>
+                        <Link href="/" onClick={showMenu} >Home</Link>
+                        <Link href="/produtos" onClick={showMenu}>Produtos</Link>
+                        <Link href="/carrinho" onClick={showMenu}>Carrinho</Link>
+                        <Link href={redirectPage} onClick={showMenu}>Minha Conta</Link>
                     </div>
 
                 }
