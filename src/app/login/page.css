@@ -10,6 +10,7 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
+    background-color:rgba(0, 0, 0, 0.75);
 }
 #caixa-login form{
     display: flex;
@@ -17,6 +18,7 @@
 }
 #caixa-login h1{
     padding-bottom: 40px;
+    text-shadow: 0px 0px 10px black;
 }
 #caixa-login input{
     padding: 8px;
@@ -45,14 +47,15 @@
     width: 320px;
     height: 35px;
     border: 1px solid black;
-    border-radius: 3px;
+    border-radius: 5px;
     margin-top: 5px;
     cursor: pointer;
-    color: #000;
+    color: #fff;
+    border: 1px solid black;
 }
 #entrar-login{
-    background-color:  #90ee90;
+    background-color:  #7e008f;
 }
 #criar-conta-login{
-    background-color: #87cefa;
+    background-color: #062091;
 }

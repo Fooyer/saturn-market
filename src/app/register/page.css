@@ -10,6 +10,7 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
+    background-color:rgba(0, 0, 0, 0.75);
 }
 #caixa-login form{
     display: flex;
@@ -45,14 +46,26 @@
     width: 320px;
     height: 35px;
     border: 1px solid black;
-    border-radius: 3px;
+    border-radius: 5px;
     margin-top: 5px;
     cursor: pointer;
-    color: #000;
+    color: #fff;
+    transition: .2s;
+}
+#botoes-login button:hover{
+    box-shadow: 0px 0px 5px black;
+}
+#botoes-login button:active{
+    width: 310px;
 }
 #entrar-login{
-    background-color:  #90ee90;
+    background-color:  #7e008f;
 }
 #criar-conta-login{
-    background-color: #87cefa;
+    background-color: #062091;
+}
+#nascimento-register{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

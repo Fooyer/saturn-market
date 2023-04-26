@@ -1,6 +1,7 @@
 "use client"
 
 import './globals.css'
+import 'react-toastify/dist/ReactToastify.css';
 
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
@@ -18,7 +19,7 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
 
         <Footer />
 
-        <ToastContainer />
+        <ToastContainer autoClose={3000} hideProgressBar={true} theme="colored" />
 
       </body>
 
