@@ -1,8 +1,14 @@
+"use client"
+
 import './page.css'
+import Link from 'next/link';
 
-
-export default function Footer() {
+export default function Login() {
     
+    function validarLogin(){
+        alert("Não implementado")
+    }
+
     return (
         <main className='login'>
 
@@ -17,8 +23,8 @@ export default function Footer() {
                 </form>
 
                 <div id="botoes-login">
-                    <button id="entrar-login">Entrar</button>
-                    <button id="criar-conta-login">Criar Conta</button>
+                    <button id="entrar-login" onClick={validarLogin}>Entrar</button>
+                    <Link href='/register' ><button id="criar-conta-login">Criar Conta</button></Link>
                 </div>
 
             </div>

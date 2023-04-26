@@ -1,7 +1,7 @@
 import './page.css'
 
 
-export default function Footer() {
+export default function Perfil() {
     
 
 

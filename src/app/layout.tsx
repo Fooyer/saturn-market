@@ -1,12 +1,10 @@
+"use client"
+
 import './globals.css'
 
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
-
-export const metadata = {
-  title: 'Saturn Market',
-  description: 'Saturn Market is a market with saturn theme',
-}
+import { ToastContainer } from 'react-toastify'
 
 export default function RootLayout({children,}: {children: React.ReactNode}) {
   return (
@@ -19,7 +17,9 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
         {children}
 
         <Footer />
-        
+
+        <ToastContainer />
+
       </body>
 
     </html>
