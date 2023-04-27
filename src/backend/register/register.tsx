@@ -48,7 +48,7 @@ export async function validarNome(nome: string){
     let message
     let { data: usuarios, error } = await supabase.from('usuarios').select('id').eq('nome',nome)
 
-    if (usuarios){
+    if (usuarios?.length){
         message = "Conta com esse nome já existe"
         return {"status": false,"message": message}
     } 
