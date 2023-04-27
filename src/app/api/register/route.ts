@@ -3,6 +3,7 @@ import { validarEmail, validarIdade, validarNome } from "@/backend/register/regi
 
 export async function POST(request: Request) {
 
+    let sc
     let requestData = await request.json()
 
     if (!requestData.nome){
@@ -21,13 +22,13 @@ export async function POST(request: Request) {
         return new Response('{"erro": "Senha é obrigatória."}', {status: 400})
     }
 
-    var sc = await validarEmail(requestData.email)
+    sc = await validarNome(requestData.nome)
+    if (!sc.status){return new Response('{"erro":"'+ sc.message +'"}',{status: 422})}
+
+    sc = await validarEmail(requestData.email)
     if (!sc.status){return new Response('{"erro":"'+ sc.message +'"}',{status: 422})}
 
     sc = validarIdade(requestData.nascimento)
-    if (!sc.status){return new Response('{"erro":"'+ sc.message +'"}',{status: 422})}
-
-    sc = await validarNome(requestData.nome)
     if (!sc.status){return new Response('{"erro":"'+ sc.message +'"}',{status: 422})}
     
     //const { data, error } = await supabase.from('usuarios').insert([{ nome: requestData.nome, email: requestData.email, nascimento: requestData.nascimento  },])
