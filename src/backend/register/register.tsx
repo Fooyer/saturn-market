@@ -1,6 +1,6 @@
 import { supabase } from "@/supabase/supabase"
 
-export function validarEmail(email: string){
+export async function validarEmail(email: string){
 
     let message
 
@@ -12,6 +12,13 @@ export function validarEmail(email: string){
 
         return {"status": false,"message": message}
     }
+
+    let { data: mail, error } = await supabase.from('usuarios').select('id').eq('email',email)
+
+    if (mail?.length){
+        message = "Conta com esse email já existe"
+        return {"status": false,"message": message}
+    } 
 
     return {"status": true,"message": message}
 
