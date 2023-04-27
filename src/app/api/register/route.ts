@@ -1,5 +1,5 @@
 import { supabase } from "@/supabase/supabase"
-import { validarEmail, validarIdade } from "@/backend/register/register"
+import { validarEmail, validarIdade, validarNome } from "@/backend/register/register"
 
 export async function POST(request: Request) {
 
@@ -25,6 +25,9 @@ export async function POST(request: Request) {
     if (!sc.status){return new Response('{"erro":"'+ sc.message +'"}',{status: 422})}
 
     sc = validarIdade(requestData.nascimento)
+    if (!sc.status){return new Response('{"erro":"'+ sc.message +'"}',{status: 422})}
+
+    sc = await validarNome(requestData.nome)
     if (!sc.status){return new Response('{"erro":"'+ sc.message +'"}',{status: 422})}
     
     //const { data, error } = await supabase.from('usuarios').insert([{ nome: requestData.nome, email: requestData.email, nascimento: requestData.nascimento  },])

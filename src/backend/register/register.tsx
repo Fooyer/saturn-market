@@ -1,6 +1,9 @@
+import { supabase } from "@/supabase/supabase"
+
 export function validarEmail(email: string){
 
     let message
+
     var re = /\S+@\S+\.\S+/;
     let isValid = re.test(email);
 
@@ -16,7 +19,6 @@ export function validarEmail(email: string){
 
 export function validarIdade(dataNascimento: string){
 
-    let isValid = true
     let message
 
     var dataNascimentoObj = new Date(dataNascimento);
@@ -39,4 +41,18 @@ export function validarIdade(dataNascimento: string){
     }
     
     return {"status": true,"message": message}
+}
+
+export async function validarNome(nome: string){
+
+    let message
+    let { data: usuarios, error } = await supabase.from('usuarios').select('id').eq('nome',nome)
+
+    if (usuarios){
+        message = "Conta com esse nome já existe"
+        return {"status": false,"message": message}
+    } 
+
+    return {"status": true,"message": message}
+
 }
