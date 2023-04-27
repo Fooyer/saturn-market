@@ -6,16 +6,14 @@ export function validarEmail(email: string){
 
     if (!isValid){
         message = 'Formato de email inválido'
-    }
-    
-    const sc = {
-        "status": isValid,
-        "message": message
+
+        return {"status": false,"message": message}
     }
 
-    return sc
+    return {"status": true,"message": message}
 
 }
+
 export function validarIdade(dataNascimento: string){
 
     let isValid = true
@@ -34,14 +32,11 @@ export function validarIdade(dataNascimento: string){
     }
 
     if (!(idade >= 0 && idade < 120)){
-        isValid = false
+
         message = 'Idade inválida'
-    }
 
-    const sc = {
-        "status": isValid,
-        "message": message
+        return {"status": false,"message": message}
     }
-
-    return sc
+    
+    return {"status": true,"message": message}
 }
