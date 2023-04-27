@@ -21,7 +21,7 @@ export async function POST(request: Request) {
         return new Response('{"erro": "Senha é obrigatória."}', {status: 400})
     }
 
-    var sc = validarEmail(requestData.email)
+    var sc = await validarEmail(requestData.email)
     if (!sc.status){return new Response('{"erro":"'+ sc.message +'"}',{status: 422})}
 
     sc = validarIdade(requestData.nascimento)
