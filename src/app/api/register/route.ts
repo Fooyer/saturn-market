@@ -1,5 +1,5 @@
-import { supabase } from "@/supabase/supabase"
-import { validarEmail, validarIdade, validarNome } from "@/backend/register/register"
+//import { supabase } from "@/supabase/supabase"
+import { validarEmail, validarIdade, validarNome, validarCPF, validarCNPJ  } from "@/backend/register/register"
 
 export async function POST(request: Request) {
 
@@ -30,6 +30,18 @@ export async function POST(request: Request) {
 
     sc = validarIdade(requestData.nascimento)
     if (!sc.status){return new Response('{"erro":"'+ sc.message +'"}',{status: 422})}
+
+    if (requestData.cpf_cnpj_select==='cpf'){
+        sc = validarCPF(requestData.cpf_cnpj)
+        if (!sc.status){return new Response('{"erro":"'+ sc.message +'"}',{status: 422})}
+    }
+    else if (requestData.cpf_cnpj_select==='cnpj') {
+        sc = validarCNPJ(requestData.cpf_cnpj)
+        if (!sc.status){return new Response('{"erro":"'+ sc.message +'"}',{status: 422})}
+    }
+    else{
+        return new Response('{"erro":"Erro no servidor, tente mais tarde"}',{status: 400})
+    }
     
     //const { data, error } = await supabase.from('usuarios').insert([{ nome: requestData.nome, email: requestData.email, nascimento: requestData.nascimento  },])
 

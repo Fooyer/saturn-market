@@ -23,6 +23,7 @@ export default function Register() {
             body: JSON.stringify({
               nome: document.getElementById('nome-register').value,
               email: document.getElementById('email-register').value,
+              cpf_cnpj_select: document.getElementById('select-cnpjcpf-register').value,
               cpf_cnpj: document.getElementById('cpf_cnpj-register').value,
               nascimento: document.getElementById('nascimento-register').value,
               senha: document.getElementById('senha-register').value
@@ -50,8 +51,17 @@ export default function Register() {
                     <input type="text" name="" id="nome-register" />
                     <label htmlFor="">Email</label>
                     <input type="text" name="" id="email-register" />
+                    
                     <label htmlFor="">CPF/CNPJ</label>
-                    <input type="text" name="" id="cpf_cnpj-register" />
+                    <div id="cpfcnpj-register">
+                        <input type="text" name="" id="cpf_cnpj-register" />
+
+                        <select name="" id="select-cnpjcpf-register">
+                            <option value="cpf">CPF</option>
+                            <option value="cnpj">CNPJ</option>
+                        </select>
+                    </div>
+
                     <label htmlFor="">Data de Nascimento</label>
                     <input type="date" name="" id="nascimento-register" />
                     <label htmlFor="">Senha</label>

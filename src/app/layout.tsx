@@ -1,11 +1,13 @@
-"use client"
-
 import './globals.css'
-import 'react-toastify/dist/ReactToastify.css';
 
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
-import { ToastContainer } from 'react-toastify'
+import ToastComponent from '@/components/toast/toast';
+
+export const metadata = {
+  title: 'Saturn Market',
+  description: 'Mercado saturno, mercado livre online fácil e prático',
+}
 
 export default function RootLayout({children,}: {children: React.ReactNode}) {
   return (
@@ -19,7 +21,7 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
 
         <Footer />
 
-        <ToastContainer autoClose={3000} hideProgressBar={true} theme="colored" />
+        <ToastComponent />
 
       </body>
 
