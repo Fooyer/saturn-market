@@ -3,6 +3,7 @@
 import './page.css'
 import Link from 'next/link';
 import { toast } from 'react-toastify';
+import { setCookie } from 'nookies'
 
 export default function Register() {
 
@@ -36,6 +37,12 @@ export default function Register() {
             toast.update(idMessage, { render: data.erro, type: "error", isLoading: false, autoClose: 3000});
         } else{
             toast.update(idMessage, { render: data.sucess, type: "success", isLoading: false, autoClose: 3000});
+            setCookie(null, 'account', document.getElementById('email-register').value, {
+                maxAge: 30 * 24 * 60 * 60,
+                path: '/',
+              })
+              
+            location.href = '/'
         }
         
     }
