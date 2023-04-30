@@ -64,7 +64,7 @@ export async function validarNome(nome: string){
 
 }
 
-export function validarCPF(cpf: string){
+export async function validarCPF(cpf: string){
 
     let message
 
@@ -90,11 +90,18 @@ export function validarCPF(cpf: string){
     if ((resto == 10) || (resto == 11))  resto = 0;
     if (resto != parseInt(cpf.substring(10, 11) ) ) return {"status": false,"message": "CPF inválido"};
 
+    let { data: cpfsearch, error } = await supabase.from('usuarios').select('id').eq('cpf',cpf)
+
+    if (cpfsearch?.length){
+        message = "Conta com esse CPF já existe"
+        return {"status": false,"message": message}
+    } 
+
     return {"status": true,"message": message}
 
 }
 
-export function validarCNPJ(cnpj: string){
+export async function validarCNPJ(cnpj: string){
 
     let message
 
@@ -140,6 +147,13 @@ export function validarCNPJ(cnpj: string){
     digito = (resto < 2) ? 0 : (11 - resto);
     
     if (digito != parseInt(cnpj.charAt(13))) return {"status": false,"message": "CNPJ inválido"};
+
+    let { data: cnpjsearch, error } = await supabase.from('usuarios').select('id').eq('cnpj',cnpj)
+
+    if (cnpjsearch?.length){
+        message = "Conta com esse CNPJ já existe"
+        return {"status": false,"message": message}
+    } 
 
     return {"status": true,"message": message}
 
