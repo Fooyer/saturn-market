@@ -4,8 +4,11 @@ import './page.css'
 import Link from 'next/link';
 import { toast } from 'react-toastify';
 import { setCookie } from 'nookies'
+import { useRouter } from 'next/navigation';
 
 export default function Register() {
+
+    const router = useRouter();
 
     async function efetuarRegistro(){
         
@@ -40,9 +43,9 @@ export default function Register() {
             setCookie(null, 'account', document.getElementById('email-register').value, {
                 maxAge: 30 * 24 * 60 * 60,
                 path: '/',
-              })
+            })
               
-            location.href = '/'
+            router.push('/')
         }
         
     }

@@ -4,9 +4,12 @@ import './page.css'
 import Link from 'next/link';
 import { toast } from 'react-toastify';
 import { setCookie } from 'nookies';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
     
+    const router = useRouter()
+
     async function validarLogin(){
         
         const idMessage = toast.loading("Validando login...")
@@ -33,7 +36,7 @@ export default function Login() {
                 path: '/',
             })
 
-            location.href = '/'
+            router.push('/')
         }
         
     }
