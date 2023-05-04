@@ -36,6 +36,7 @@ export default function Login() {
                 path: '/',
             })
 
+            document.getElementById("minha-conta-header").href = "/perfil"
             router.push('/')
         }
         

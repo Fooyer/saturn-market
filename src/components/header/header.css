@@ -113,7 +113,7 @@ header a{
     z-index: 99;
 }
 
-#options-hamburguer-header a{
+#options-hamburguer-header a, #options-hamburguer-header div{
     margin: 20px;
     font-size: 16pt;
 }

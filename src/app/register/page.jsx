@@ -44,7 +44,8 @@ export default function Register() {
                 maxAge: 30 * 24 * 60 * 60,
                 path: '/',
             })
-              
+            
+            document.getElementById("minha-conta-header").href = "/perfil"
             router.push('/')
         }
         

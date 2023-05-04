@@ -5,27 +5,33 @@ import Link from 'next/link'
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { parseCookies } from 'nookies';
+import { useRouter } from 'next/navigation';
 
 export default function Header() {
-    
+
+    const router = useRouter()
     const [tamanhoJanela, setTamanhoJanela] = useState(0)
     const [mostrarMenu, setMostrarMenu] = useState(false)
-    const [redirectPage, setRedirectPage] = useState('/')
     
     useEffect(()=>{
         setTamanhoJanela(window.innerWidth)
 
         window.addEventListener('resize', () => setTamanhoJanela(window.innerWidth));
-
+    },[])
+    
+    function redirecionar(){
         let cookieStore = parseCookies();
         let account = cookieStore.account
 
         if (!account){
-            setRedirectPage('/login')
+            router.push('/login')
         } else{
-            setRedirectPage('/perfil')
+            router.push('/perfil')
         }
-    },[])
+        if (mostrarMenu){
+            showMenu()
+        }
+    }
 
     function showMenu(){
         setMostrarMenu(PrevVal => !PrevVal)
@@ -47,7 +53,7 @@ export default function Header() {
                 <Link href="/carrinho" >Carrinho</Link>
             </div>
 
-            <Link id="minha-conta-header" href={redirectPage}>Minha Conta</Link>
+            <div id="minha-conta-header" onClick={redirecionar}>Minha Conta</div>
 
           </nav>}
           {tamanhoJanela <= 999 && tamanhoJanela!==0 && <nav id='nav-mobile'>
@@ -71,7 +77,7 @@ export default function Header() {
                         <Link href="/" onClick={showMenu} >Home</Link>
                         <Link href="/produtos" onClick={showMenu}>Produtos</Link>
                         <Link href="/carrinho" onClick={showMenu}>Carrinho</Link>
-                        <Link href={redirectPage} onClick={showMenu}>Minha Conta</Link>
+                        <div onClick={redirecionar}>Minha Conta</div>
                     </div>
 
                 }
